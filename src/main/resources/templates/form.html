@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>watpiyn</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link th:href="@{/bootstrap-3.2.0/css/bootstrap.min.css}" rel="stylesheet" />
+  <link th:href="@{/css/watpiyn.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="theme :: header"></div>
+
+
+<div class="container">
+
+  <div class="row">
+    <div th:if="${config.imageEnabled}" class="col-md-4">
+      <img th:src="${config.imageUrl}" class="img-responsive" alt="Logo" />
+    </div>
+    <div th:if="${config.introEnabled}" th:class="${config.imageEnabled}? 'col-md-8' : 'col-md-12'">
+      <div class="jumbotron">
+        <h1 th:if="${config.introHeading}" th:text="${config.introHeading}">Welcome!</h1>
+        <p th:if="${config.introText}" th:utext="${config.introText}"></p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div th:if="${config.privacyEnabled}" class="row">
+    <div class="col-xs-12">
+      <h2 th:if="${config.privacyHeading}" th:text="${config.privacyHeading}">Privacy Policy</h2>
+      <textarea th:if="${config.privacyText}" th:text="${config.privacyText}" class="form-control" rows="10"></textarea>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script th:src="@{/jquery-1.11.1/jquery-1.11.1.min.js}"></script>
+<script th:src="@{/bootstrap-3.2.0/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

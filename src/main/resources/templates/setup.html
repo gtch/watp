@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="theme :: head"></head>
+<body>
+
+<div th:replace="theme :: header"></div>
+
+<div class="container">
+
+  <div class="jumbotron">
+    <h1>Welcome to watpiyn!</h1>
+    <p>Your form hasn't been set up yet.</p>
+    <p>Please see the <a href="https://github.com/gtch/watpiyn">documentation</a> for instructions on how to get started.</p>
+  </div>
+
+  <div class="alert alert-info" role="alert">
+    <b>PS:</b>
+    Your configuration file should be located at <span th:text="${config.filePath}"></span>
+  </div>
+
+</div>
+
+<span th:replace="theme :: footer"></span>
+
+</body>
+</html>
