@@ -1,62 +1,60 @@
 package com.charlesgutjahr.watpiyn.config;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.*;
-import java.net.URL;
-import java.util.Properties;
+import java.util.List;
 
 
 public class Config {
 
+  final String filePath;
 
-  private final Properties properties;
-  private String filePath;
+  final String csvFilename;
+  final String xlsFilename;
+  final String xlsSheet;
 
-  private String IMAGE_FILENAME = "image.filename";
+  final String imageFilename;
+  final String imageUrl;
+  final boolean headerEnabled;
+  final String headerText;
+  final boolean startAgainEnabled;
+  final String startAgainText;
+  final String introHeading;
+  final String introText;
+  final String privacyHeading;
+  final String privacyText;
+  final String thankyouHeading;
+  final String thankyouText;
 
-  private String HEADER_ENABLED = "header.enabled";
-  private String HEADER_TEXT = "header.text";
-  private String STARTAGAIN_ENABLED = "startagain.enabled";
-  private String STARTAGAIN_TEXT = "startagain.text";
 
-  private String INTRO_HEADING = "intro.heading";
-  private String INTRO_TEXT = "intro.text";
-
-  private String PRIVACY_HEADING = "privacy.heading";
-  private String PRIVACY_FILENAME = "privacy.filename";
-  private String PRIVACY_TEXT = "privacy.text";
+  final List<Question> questions;
 
 
-  public Config() {
-    this.properties = new Properties();
+  Config(String filePath, String csvFilename, String xlsFilename, String xlsSheet, String imageFilename, String imageUrl, boolean headerEnabled, String headerText, boolean startAgainEnabled, String startAgainText,
+         String introHeading, String introText, String privacyHeading, String privacyText, String thankyouHeading, String thankyouText, List<Question> questions) {
+    this.filePath = filePath;
+    this.csvFilename = csvFilename;
+    this.xlsFilename = xlsFilename;
+    this.xlsSheet = xlsSheet;
+    this.imageFilename = imageFilename;
+    this.imageUrl = imageUrl;
+    this.headerEnabled = headerEnabled;
+    this.headerText = headerText;
+    this.startAgainEnabled = startAgainEnabled;
+    this.startAgainText = startAgainText;
+    this.introHeading = introHeading;
+    this.introText = introText;
+    this.privacyHeading = privacyHeading;
+    this.privacyText = privacyText;
+    this.thankyouHeading = thankyouHeading;
+    this.thankyouText = thankyouText;
+    this.questions = questions;
   }
-  public Config(File file) {
-    this.properties = new Properties();
-    loadProperties(file);
-  }
 
-
-  public static File getDefaultPropertiesFile() {
-    URL jarUrl = Config.class.getProtectionDomain().getCodeSource().getLocation();
-    File jarFile = new File(jarUrl.getPath(), "watpiyn.properties");
-    return jarFile;
-  }
 
 
   public boolean isValid() {
     return true;
-  }
-
-
-  /**
-   * Write the list of configured properties to the given PrintStream. Useful for debugging.
-   * @param out An output stream, such as System.out
-   */
-  public void listProperties(PrintStream out) {
-    out.println("### watpiyn configuration at startup is: ###");
-    properties.list(out);
   }
 
 
@@ -65,131 +63,104 @@ public class Config {
   }
 
 
-  public boolean isImageEnabled() {
-    return StringUtils.isNotBlank(getImageFilename());
+  public boolean isCsvEnabled() {
+    return StringUtils.isNotBlank(csvFilename);
   }
 
-  public String getImageFilename() {
-    return properties.getProperty(IMAGE_FILENAME);
+
+  public String getCsvFilename() {
+    return csvFilename;
   }
 
-  public String getImageUrl() {
-    String filename = getImageFilename();
-    if (filename == null) {
-      return null;
-    } else {
-      return "/images/" + new File(filename).getName();
-    }
+
+  public boolean isXlsEnabled() {
+    return StringUtils.isNotBlank(xlsFilename);
   }
+
+
+  public String getXlsFilename() {
+    return xlsFilename;
+  }
+
+
+  public String getXlsSheet() {
+    return xlsSheet;
+  }
+
 
   public boolean isHeaderEnabled() {
-    return Boolean.parseBoolean(properties.getProperty(HEADER_ENABLED));
+    return headerEnabled;
   }
 
-  public String getHeaderText() {
-    return properties.getProperty(HEADER_TEXT);
-  }
-
-  public boolean isStartAgainEnabled() {
-    return Boolean.parseBoolean(properties.getProperty(STARTAGAIN_ENABLED));
-  }
-
-  public String getStartAgainText() {
-    return properties.getProperty(STARTAGAIN_TEXT);
+  public boolean isImageEnabled() {
+    return StringUtils.isNotBlank(imageFilename);
   }
 
   public boolean isIntroEnabled() {
-    return StringUtils.isNotBlank(getIntroHeading())
-      || StringUtils.isNotBlank(getIntroText());
-  }
-
-  public String getIntroHeading() {
-    return properties.getProperty(INTRO_HEADING);
-  }
-
-  public String getIntroText() {
-    String text = properties.getProperty(INTRO_TEXT);
-    return text == null ? null : text.replace("\n", "</p><p>"); // Convert line breaks into new paragraphs
+    return StringUtils.isNotBlank(introHeading)
+      || StringUtils.isNotBlank(introText);
   }
 
   public boolean isPrivacyEnabled() {
-    return StringUtils.isNotBlank(getPrivacyHeading())
-      || StringUtils.isNotBlank(getPrivacyText());
+    return StringUtils.isNotBlank(privacyHeading)
+      || StringUtils.isNotBlank(privacyText);
   }
+
+  public String getImageFilename() {
+    return imageFilename;
+  }
+
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+
+  public String getHeaderText() {
+    return headerText;
+  }
+
+  public boolean isStartAgainEnabled() {
+    return startAgainEnabled;
+  }
+
+
+  public String getStartAgainText() {
+    return startAgainText;
+  }
+
+
+  public String getIntroHeading() {
+    return introHeading;
+  }
+
+
+  public String getIntroText() {
+    return introText;
+  }
+
 
   public String getPrivacyHeading() {
-    return properties.getProperty(PRIVACY_HEADING);
+    return privacyHeading;
   }
+
 
   public String getPrivacyText() {
-    String privacyFile = properties.getProperty(PRIVACY_FILENAME);
-    String text = null;
-    if (privacyFile != null) {
-      text = loadTextFile(new File(privacyFile));
-    }
-    if (text == null) {
-      text = properties.getProperty(PRIVACY_TEXT);
-    }
-    return text;
+    return privacyText;
   }
 
 
-
-
-
-
-
-  public String loadTextFile(File file) {
-    try (Reader fileReader = new InputStreamReader(new FileInputStream(file), "UTF-8")) {
-      return IOUtils.toString(fileReader);
-    } catch (FileNotFoundException e) {
-      System.out.println("Text file " + file + " does not exist.");
-    } catch (UnsupportedEncodingException e) {
-      System.out.println("Cannot load text because UTF-8 encoding is unsupported, this should not be possible!");
-      e.printStackTrace();
-    } catch (IOException e) {
-      System.out.println("Cannot load text due to exception reading file " + file);
-      e.printStackTrace();
-    }
-    return null;
-  }
-
-  public void loadProperties(File file) {
-    filePath = file.getAbsolutePath();
-    try (Reader propertiesReader = new InputStreamReader(new FileInputStream(file), "UTF-8")) {
-      properties.load(propertiesReader);
-      ConfigChangeHandler.handleChanges(this);
-    } catch (FileNotFoundException e) {
-      System.out.println("Properties file " + file + " does not exist. No configuration is being loaded.");
-    } catch (UnsupportedEncodingException e) {
-      System.out.println("Cannot load configuration because UTF-8 encoding is unsupported, this should not be possible!");
-      e.printStackTrace();
-    } catch (IOException e) {
-      System.out.println("Cannot load configuration due to exception reading properties file "  + file);
-      e.printStackTrace();
-    }
+  public String getThankyouHeading() {
+    return thankyouHeading;
   }
 
 
-  /**
-   * For future use, would save configuration to a properties file. Not currently used.
-   * @param file
-   */
-  public void saveProperties(File file) {
-    System.out.println("Saving configuration to file " + file);
-    filePath = file.getAbsolutePath();
-    try (Writer propertiesWriter = new OutputStreamWriter(new FileOutputStream(file), "UTF-8")) {
-      properties.store(propertiesWriter, "## watpiyn configuration ###");
-    } catch (UnsupportedEncodingException e) {
-      System.out.println("Cannot save configuration because UTF-8 encoding is unsupported, this should not be possible!");
-      e.printStackTrace();
-    } catch (IOException e) {
-      System.out.println("Cannot save configuration due to exception writing properties file");
-      e.printStackTrace();
-    }
+  public String getThankyouText() {
+    return thankyouText;
   }
 
 
-
-
+  public List<Question> getQuestions() {
+    return questions;
+  }
 }

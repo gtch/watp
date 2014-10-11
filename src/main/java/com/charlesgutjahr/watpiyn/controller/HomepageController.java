@@ -1,8 +1,8 @@
 package com.charlesgutjahr.watpiyn.controller;
 
 import com.charlesgutjahr.watpiyn.config.Config;
+import com.charlesgutjahr.watpiyn.config.ConfigLoader;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,7 +13,7 @@ public class HomepageController {
   @RequestMapping("/")
   public ModelAndView index() {
     ModelAndView mav = new ModelAndView();
-    Config config = getConfig();
+    Config config = ConfigLoader.loadConfig();
     if (config.isValid()) {
       mav.setViewName("form");
     } else {
@@ -21,10 +21,6 @@ public class HomepageController {
     }
     mav.addObject("config", config);
     return mav;
-  }
-
-  private Config getConfig() {
-    return new Config(Config.getDefaultPropertiesFile());
   }
 
 }

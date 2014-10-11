@@ -37,6 +37,17 @@
     </div>
   </div>
 
+  <form class="mainform form-horizontal" role="form" autocomplete="false" method="post" action="/submit">
+    <div th:each="question : ${config.questions}">
+      <div th:replace="questions :: ${question.type}"></div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
 
 </div>
 
