@@ -40,6 +40,8 @@ public class Application {
     Config config = ConfigLoader.loadProperties(ConfigLoader.getDefaultPropertiesFile());
     System.out.println("### watpiyn configuration at startup is: ###");
     System.out.println(new ReflectionToStringBuilder(config, ToStringStyle.MULTI_LINE_STYLE).toString());
+    System.out.println();
+    System.out.println("### watpiyn is now ready at http://localhost:8080/ ###");
   }
 
   public static Path getTempDirectory() {

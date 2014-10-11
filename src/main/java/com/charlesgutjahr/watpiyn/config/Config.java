@@ -54,7 +54,8 @@ public class Config {
 
 
   public boolean isValid() {
-    return true;
+    return questions != null && questions.size() > 0
+      && (isCsvEnabled() || isXlsEnabled());
   }
 
 

@@ -51,9 +51,15 @@ public class ConfigLoader {
 
 
   public static File getDefaultPropertiesFile() {
-    URL jarUrl = Config.class.getProtectionDomain().getCodeSource().getLocation();
-    File jarFile = new File(jarUrl.getPath(), "watpiyn.properties");
-    return jarFile;
+    URL jarUrl = ConfigLoader.class.getProtectionDomain().getCodeSource().getLocation();
+    String jarUrlPath = jarUrl.getPath();
+    if (jarUrlPath.startsWith("file:")) {
+      jarUrlPath = jarUrlPath.substring(5);
+    }
+    File jarFile = new File(jarUrlPath);
+    System.out.println("jarFile=" + jarFile);
+    File propertiesFile = new File(jarFile.getParentFile(), "watpiyn.properties");
+    return propertiesFile;
   }
 
   public static String loadTextFile(File file) {
@@ -107,7 +113,8 @@ public class ConfigLoader {
       System.out.println("Cannot load configuration due to exception reading properties file "  + file);
       e.printStackTrace();
     }
-    return null;
+
+    return new Config(file.getPath(), null, null, null, null, null, false, null, false, null, null, null, null, null, null, null, null);
   }
 
 
