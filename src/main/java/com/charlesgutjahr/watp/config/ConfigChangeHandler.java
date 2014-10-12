@@ -1,6 +1,6 @@
-package com.charlesgutjahr.watpiyn.config;
+package com.charlesgutjahr.watp.config;
 
-import com.charlesgutjahr.watpiyn.Application;
+import com.charlesgutjahr.watp.Application;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

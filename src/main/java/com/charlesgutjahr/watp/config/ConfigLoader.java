@@ -1,6 +1,6 @@
-package com.charlesgutjahr.watpiyn.config;
+package com.charlesgutjahr.watp.config;
 
-import com.charlesgutjahr.watpiyn.model.QuestionType;
+import com.charlesgutjahr.watp.model.QuestionType;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;
@@ -58,7 +58,7 @@ public class ConfigLoader {
     }
     File jarFile = new File(jarUrlPath);
     System.out.println("jarFile=" + jarFile);
-    File propertiesFile = new File(jarFile.getParentFile(), "watpiyn.properties");
+    File propertiesFile = new File(jarFile.getParentFile(), "watp.properties");
     return propertiesFile;
   }
 

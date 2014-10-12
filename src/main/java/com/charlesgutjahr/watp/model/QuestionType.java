@@ -1,4 +1,4 @@
-package com.charlesgutjahr.watpiyn.model;
+package com.charlesgutjahr.watp.model;
 
 public enum QuestionType {
 

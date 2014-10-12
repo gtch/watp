@@ -1,4 +1,4 @@
-package com.charlesgutjahr.watpiyn;
+package com.charlesgutjahr.watp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

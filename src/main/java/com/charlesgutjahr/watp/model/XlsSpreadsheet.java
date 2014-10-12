@@ -1,7 +1,7 @@
-package com.charlesgutjahr.watpiyn.model;
+package com.charlesgutjahr.watp.model;
 
-import com.charlesgutjahr.watpiyn.config.Config;
-import com.charlesgutjahr.watpiyn.config.Question;
+import com.charlesgutjahr.watp.config.Config;
+import com.charlesgutjahr.watp.config.Question;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;

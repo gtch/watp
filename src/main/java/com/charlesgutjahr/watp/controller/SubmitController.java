@@ -1,11 +1,11 @@
-package com.charlesgutjahr.watpiyn.controller;
+package com.charlesgutjahr.watp.controller;
 
-import com.charlesgutjahr.watpiyn.config.Config;
-import com.charlesgutjahr.watpiyn.config.ConfigLoader;
-import com.charlesgutjahr.watpiyn.config.Question;
-import com.charlesgutjahr.watpiyn.model.Form;
-import com.charlesgutjahr.watpiyn.model.QuestionType;
-import com.charlesgutjahr.watpiyn.model.XlsSpreadsheet;
+import com.charlesgutjahr.watp.config.Config;
+import com.charlesgutjahr.watp.config.ConfigLoader;
+import com.charlesgutjahr.watp.config.Question;
+import com.charlesgutjahr.watp.model.Form;
+import com.charlesgutjahr.watp.model.QuestionType;
+import com.charlesgutjahr.watp.model.XlsSpreadsheet;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

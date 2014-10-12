@@ -1,9 +1,8 @@
-package com.charlesgutjahr.watpiyn;
+package com.charlesgutjahr.watp;
 
-import com.charlesgutjahr.watpiyn.config.Config;
-import com.charlesgutjahr.watpiyn.config.ConfigLoader;
+import com.charlesgutjahr.watp.config.Config;
+import com.charlesgutjahr.watp.config.ConfigLoader;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -28,7 +27,7 @@ public class Application {
 
     // Create a temporary directory on startup to store images
     try {
-      tempDirectory = Files.createTempDirectory("watpiyn-images");
+      tempDirectory = Files.createTempDirectory("watp-images");
     } catch (IOException e) {
       System.err.println("Warning: unable to create temporary directory. Logo images will not be displayed.");
       e.printStackTrace();
@@ -38,10 +37,10 @@ public class Application {
 
     // List the configuration on startup
     Config config = ConfigLoader.loadProperties(ConfigLoader.getDefaultPropertiesFile());
-    System.out.println("### watpiyn configuration at startup is: ###");
+    System.out.println("### watp configuration at startup is: ###");
     System.out.println(new ReflectionToStringBuilder(config, ToStringStyle.MULTI_LINE_STYLE).toString());
     System.out.println();
-    System.out.println("### watpiyn is now ready at http://localhost:8080/ ###");
+    System.out.println("### watp is now ready at http://localhost:8080/ ###");
   }
 
   public static Path getTempDirectory() {

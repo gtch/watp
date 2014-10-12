@@ -1,6 +1,6 @@
-package com.charlesgutjahr.watpiyn.config;
+package com.charlesgutjahr.watp.config;
 
-import com.charlesgutjahr.watpiyn.model.QuestionType;
+import com.charlesgutjahr.watp.model.QuestionType;
 
 
 public class Question {

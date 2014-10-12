@@ -1,7 +1,7 @@
-package com.charlesgutjahr.watpiyn.controller;
+package com.charlesgutjahr.watp.controller;
 
-import com.charlesgutjahr.watpiyn.config.Config;
-import com.charlesgutjahr.watpiyn.config.ConfigLoader;
+import com.charlesgutjahr.watp.config.Config;
+import com.charlesgutjahr.watp.config.ConfigLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

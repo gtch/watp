@@ -1,4 +1,4 @@
-package com.charlesgutjahr.watpiyn.model;
+package com.charlesgutjahr.watp.model;
 
 import java.util.HashMap;
 import java.util.Map;

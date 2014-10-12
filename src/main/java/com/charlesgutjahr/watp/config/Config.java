@@ -1,4 +1,4 @@
-package com.charlesgutjahr.watpiyn.config;
+package com.charlesgutjahr.watp.config;
 
 import org.apache.commons.lang3.StringUtils;
 
